@@ -10,7 +10,7 @@ export default function Navbar() {
                 <TransitionLink href="/">
                     <p className='logo font-bold text-white text-3xl'>CZOCH</p>
                 </TransitionLink>
-                <div className='w-full h-16 pt-2 mb-6 flex items-center justify-center'>
+                <div className='w-full h-16 mb-6 flex items-center justify-center'>
                     <TransitionLink href="/o-firmie" className='goto text-white text-[14px] sm:text-[16px] mx-4 sm:mx-8'>O FIRMIE</TransitionLink>
                     <span className='divider w-[2px] bg-white'></span>
                     <TransitionLink href="/realizacje" className='goto text-white text-[14px] sm:text-[16px] mx-4 sm:mx-8'>REALIZACJE</TransitionLink>

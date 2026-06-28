@@ -2,6 +2,14 @@
 
 import { useState, useEffect } from "react";
 
+const getOptimizedUrl = (url) => {
+  if (!url) return "";
+  if (url.includes("cloudinary.com") && url.includes("/upload/")) {
+    return url.replace("/upload/", "/upload/f_auto,q_auto/");
+  }
+  return url;
+};
+
 const ImageGallery = ({ category }) => {
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(null);
@@ -58,10 +66,11 @@ const ImageGallery = ({ category }) => {
         {images.map((image, index) => (
           <div key={image.src} className="gallery-item" style={{ animationDelay: `${index * 0.2}s` }}>
             <img
-              src={image.src}
+              src={getOptimizedUrl(image.src)}
               alt={image.alt}
               className="gallery-thumbnail"
               onClick={() => openLightbox(image)}
+              loading="lazy" 
             />
           </div>
         ))}
@@ -71,7 +80,7 @@ const ImageGallery = ({ category }) => {
         <div className="lightbox-overlay" onClick={closeLightbox}>
           <div className="lightbox-content">
             <img
-              src={currentImage?.src}
+              src={getOptimizedUrl(currentImage?.src)}
               alt={currentImage?.alt}
               className="lightbox-image"
             />
